@@ -1,14 +1,14 @@
 name: s3_storage
-description: S3 (AWS, MinIO) Dart Client SDK that provides simple APIs to access any Amazon S3 compatible object storage server.
-version: 1.0.4
-homepage: https://github.com/MindMayhem/s3_storage
-issue_tracker: https://github.com/MindMayhem/s3_storage
+description: flutter_s3_storage
+version: 1.0.6
+homepage: https://github.com/halifox/flutter_s3_storage
+issue_tracker: https://github.com/halifox/flutter_s3_storage
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: 3.6.0
 
 dependencies:
-  meta: 1.16.0
+  meta: 1.15.0
   http: 1.2.2
   crypto: 3.0.6
   convert: 3.1.2
@@ -16,7 +16,7 @@ dependencies:
   buffer: 1.2.3
   intl: 0.20.1
   mime: 2.0.0
-  path: 1.9.1
+  path: 1.9.0
 
 dev_dependencies:
   pedantic: 1.11.1

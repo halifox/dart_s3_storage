@@ -159,7 +159,7 @@
     },
     {
       "name": "meta",
-      "rootUri": "file:///C:/Users/user/AppData/Local/Pub/Cache/hosted/pub.dev/meta-1.16.0",
+      "rootUri": "file:///C:/Users/user/AppData/Local/Pub/Cache/hosted/pub.dev/meta-1.15.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -183,9 +183,9 @@
     },
     {
       "name": "path",
-      "rootUri": "file:///C:/Users/user/AppData/Local/Pub/Cache/hosted/pub.dev/path-1.9.1",
+      "rootUri": "file:///C:/Users/user/AppData/Local/Pub/Cache/hosted/pub.dev/path-1.9.0",
       "packageUri": "lib/",
-      "languageVersion": "3.4"
+      "languageVersion": "3.0"
     },
     {
       "name": "pedantic",
@@ -353,10 +353,10 @@
       "name": "s3_storage",
       "rootUri": "../",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "3.6"
     }
   ],
-  "generated": "2024-12-29T08:11:57.044523Z",
+  "generated": "2024-12-29T08:38:29.335178Z",
   "generator": "pub",
   "generatorVersion": "3.6.0",
   "flutterRoot": "file:///C:/Users/user/Documents/flutter",

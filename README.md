@@ -22,7 +22,7 @@ dependencies:
   s3_storage:
     git:
       url: https://github.com/halifox/flutter_s3_storage
-      ref: 1.0.5
+      ref: 1.0.6
 
 ```
 
