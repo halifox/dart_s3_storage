@@ -1,8 +1,8 @@
 name: s3_storage
-description: flutter_s3_storage
-version: 1.0.6
-homepage: https://github.com/halifox/flutter_s3_storage
-issue_tracker: https://github.com/halifox/flutter_s3_storage
+description: dart_s3_storage
+version: 1.0.7
+homepage: https://github.com/halifox/dart_s3_storage
+issue_tracker: https://github.com/halifox/dart_s3_storage
 
 environment:
   sdk: 3.6.0

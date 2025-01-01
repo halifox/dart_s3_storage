@@ -1,13 +1,13 @@
-# flutter_s3_storage
+# dart_s3_storage
 
-`flutter_s3_storage` 是一个 Flutter 库，提供统一接口，兼容所有支持 S3 协议的对象存储服务。它简化了在不同 S3 存储平台之间的集成与操作，适用于 Flutter 应用的多平台存储需求。
+`dart_s3_storage` 是一个简化 S3 协议兼容的对象存储服务集成与操作的库。
 
 ---
 
 ## ⚙️ 功能
 
-- 🌐 支持所有兼容 S3 协议的对象存储服务（如 AWS S3、阿里云 OSS、Google Cloud Storage 等）
-- 📱 简化了 Flutter 应用的存储操作
+- 🌐 支持兼容 S3 协议的对象存储服务（如 AWS S3、Google Cloud Storage、阿里云 OSS、Cloudflare R2、MinIO 等）
+- 📱 简化了 Dart 与 Flutter 应用的存储操作
 - 🔌 提供一致的 API 接口，便于跨平台存储集成
 - ⬆️ 支持文件上传、下载、删除等常见操作
 
@@ -21,8 +21,8 @@
 dependencies:
   s3_storage:
     git:
-      url: https://github.com/halifox/flutter_s3_storage
-      ref: 1.0.6
+      url: https://github.com/halifox/dart_s3_storage
+      ref: 1.0.7
 
 ```
 
@@ -32,10 +32,10 @@ dependencies:
 
 ```dart
 final s3_storage = S3Storage(
-  endPoint: 's3.amazonaws.com',  //'${Account_ID}.r2.cloudflarestorage.com'
+  endPoint: 's3.amazonaws.com',  //或 '${Account_ID}.r2.cloudflarestorage.com'
   accessKey: 'Access Key ID',
   secretKey: 'Secret Access Key',
-  signingType: SigningType.V4, // or SigningType.V2
+  signingType: SigningType.V4, // 或 SigningType.V2
 );
 ```
 
