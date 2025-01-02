@@ -123,7 +123,7 @@ final s3_storage = S3Storage(
 
 该库基于 [s3_storage](https://pub.dev/packages/s3_storage) 修改而来，原作者保留完整版权。
 
-本项目遵循 [LGPL-3.0 License](License)。
+本项目遵循 [LGPL-3.0 License](LICENSE)。
 
 所有修改过的部分仍然遵循 [MIT License](MIT%20LICENSE)，并且包含原始库的版权声明和许可声明。
 

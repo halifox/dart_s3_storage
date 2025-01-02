@@ -87,7 +87,7 @@ git push origin feature/您的功能名
 
 ## 许可证
 
-本项目遵循 [GPL-3.0 License](MIT LICENSE)。
+本项目遵循 [GPL-3.0 License](LICENSE)。
 
 ---
 
