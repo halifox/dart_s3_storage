@@ -1,21 +1,23 @@
 # dart_s3_storage
 
-`dart_s3_storage` 是一个简化 S3 协议兼容的对象存储服务集成与操作的库。
+[中文文档](README-CN.md)
+
+`dart_s3_storage` is a library that simplifies the integration and operation of object storage services compatible with the S3 protocol.
 
 ---
 
-## ⚙️ 功能
+## ⚙️ Features
 
-- 🌐 支持兼容 S3 协议的对象存储服务（如 AWS S3、Google Cloud Storage、阿里云 OSS、Cloudflare R2、MinIO 等）
-- 📱 简化了 Dart 与 Flutter 应用的存储操作
-- 🔌 提供一致的 API 接口，便于跨平台存储集成
-- ⬆️ 支持文件上传、下载、删除等常见操作
+- 🌐 Supports object storage services compatible with the S3 protocol (e.g., AWS S3, Google Cloud Storage, Alibaba Cloud OSS, Cloudflare R2, MinIO, etc.)
+- 📱 Simplifies storage operations for Dart and Flutter applications
+- 🔌 Provides a consistent API interface for cross-platform storage integration
+- ⬆️ Supports common operations like file upload, download, deletion, etc.
 
 ---
 
-## 📥 安装
+## 📥 Installation
 
-在 `pubspec.yaml` 文件中添加依赖：
+Add the dependency to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
@@ -23,29 +25,28 @@ dependencies:
     git:
       url: https://github.com/halifox/dart_s3_storage
       ref: 1.0.7
-
 ```
 
 ---
 
-## 🛠️ 使用方法
+## 🛠️ Usage
 
 ```dart
 final s3_storage = S3Storage(
-  endPoint: 's3.amazonaws.com',  //或 '${Account_ID}.r2.cloudflarestorage.com'
+  endPoint: 's3.amazonaws.com',  // or '${Account_ID}.r2.cloudflarestorage.com'
   accessKey: 'Access Key ID',
   secretKey: 'Secret Access Key',
-  signingType: SigningType.V4, // 或 SigningType.V2
+  signingType: SigningType.V4, // or SigningType.V2
 );
 ```
 
-**向存储桶上传一个对象**
+**Upload an object to the bucket**
 
 ```dart
   String etag = await s3_storage.fPutObject('mybucket', 'myobject', 'path/to/file');
 ```
 
-**以流式方式上传对象**
+**Upload an object as a stream**
 
 ```dart
   String etag = await s3_storage.putObject(
@@ -56,7 +57,7 @@ final s3_storage = S3Storage(
   );
 ```
 
-**获取存储桶中的一个对象**
+**Retrieve an object from the bucket**
 
 ```dart
   final stream = await s3_storage.getObject('BUCKET-NAME', 'OBJECT-NAME');
@@ -64,7 +65,7 @@ final s3_storage = S3Storage(
   // Get object length
   print(stream.contentLength);
 
-  // Write object data stream to file
+  // Write object data stream to a file
   await stream.pipe(File('output.txt').openWrite());
 ```
 
@@ -73,70 +74,70 @@ final s3_storage = S3Storage(
 ## API
 
 ### Bucket Operations
-- **makeBucket**：创建一个新的存储桶。
-- **listBuckets**：列出所有存储桶。
-- **bucketExists**：检查指定的存储桶是否存在。
-- **removeBucket**：删除一个存储桶。
-- **listObjects**：列出存储桶中的对象（传统方式）。
-- **listObjectsV2**：列出存储桶中的对象（V2版本，支持更多功能）。
-- **listIncompleteUploads**：列出正在进行的上传任务。
-- **listAllObjects**：列出存储桶中的所有对象（包括子文件夹中的对象）。
-- **listAllObjectsV2**：列出存储桶中的所有对象（V2版本，支持更多功能）。
+- **makeBucket**: Create a new bucket.
+- **listBuckets**: List all buckets.
+- **bucketExists**: Check if a specified bucket exists.
+- **removeBucket**: Delete a bucket.
+- **listObjects**: List objects in a bucket (traditional method).
+- **listObjectsV2**: List objects in a bucket (V2, supports more features).
+- **listIncompleteUploads**: List ongoing upload tasks.
+- **listAllObjects**: List all objects in a bucket (including objects in subfolders).
+- **listAllObjectsV2**: List all objects in a bucket (V2, supports more features).
 
 ### Object Operations
-- **getObject**：获取存储桶中的一个对象。
-- **getPartialObject**：获取存储桶中对象的部分内容（支持分块下载）。
-- **fGetObject**：以流式方式获取存储桶中的一个对象。
-- **putObject**：向存储桶上传一个对象。
-- **fPutObject**：以流式方式上传对象。
-- **copyObject**：将一个对象从一个位置复制到另一个位置。
-- **statObject**：获取对象的元数据（如大小、最后修改时间等）。
-- **removeObject**：删除存储桶中的一个对象。
-- **removeObjects**：删除存储桶中的多个对象。
+- **getObject**: Retrieve an object from a bucket.
+- **getPartialObject**: Retrieve partial content of an object (supports chunked downloads).
+- **fGetObject**: Retrieve an object from a bucket as a stream.
+- **putObject**: Upload an object to a bucket.
+- **fPutObject**: Upload an object to a bucket as a stream.
+- **copyObject**: Copy an object from one location to another.
+- **statObject**: Get object metadata (e.g., size, last modified time, etc.).
+- **removeObject**: Delete an object from a bucket.
+- **removeObjects**: Delete multiple objects from a bucket.
 
 ### Presigned Operations
-- **presignedUrl**：生成一个临时的 URL，用于访问存储桶中的对象。
-- **presignedGetObject**：生成一个临时 URL，用于下载存储桶中的对象。
-- **presignedPutObject**：生成一个临时 URL，用于上传对象到存储桶。
-- **presignedPostPolicy**：生成一个临时的表单上传 URL，通常用于 Web 表单提交。
+- **presignedUrl**: Generate a temporary URL to access an object in a bucket.
+- **presignedGetObject**: Generate a temporary URL to download an object from a bucket.
+- **presignedPutObject**: Generate a temporary URL to upload an object to a bucket.
+- **presignedPostPolicy**: Generate a temporary form upload URL, typically used for web form submissions.
 
 ### Bucket Policy & Notification Operations
-- **getBucketNotification**：获取存储桶的通知配置。
-- **setBucketNotification**：设置存储桶的通知配置，用于事件触发通知（如对象上传）。
-- **removeAllBucketNotification**：删除存储桶的所有通知配置。
-- **listenBucketNotification**：监听存储桶的通知事件。
-- **getBucketPolicy**：获取存储桶的访问策略。
-- **setBucketPolicy**：设置存储桶的访问策略。
-- **removeIncompleteUpload**：移除未完成的上传任务。
+- **getBucketNotification**: Get the bucket's notification configuration.
+- **setBucketNotification**: Set the bucket's notification configuration for event-driven notifications (e.g., object uploads).
+- **removeAllBucketNotification**: Remove all bucket notification configurations.
+- **listenBucketNotification**: Listen for bucket notification events.
+- **getBucketPolicy**: Get the bucket's access policy.
+- **setBucketPolicy**: Set the bucket's access policy.
+- **removeIncompleteUpload**: Remove incomplete upload tasks.
 
 ---
 
-## 🤝 贡献
+## 🤝 Contributing
 
-我们欢迎任何形式的社区贡献！  
+We welcome all forms of community contributions!
 
-请阅读 [贡献指南 (CONTRIBUTING.md)](CONTRIBUTING.md)，了解如何提交 Issue、请求功能或贡献代码。
-
----
-
-## 📜 许可证
-
-该库基于 [s3_storage](https://pub.dev/packages/s3_storage) 修改而来，原作者保留完整版权。
-
-本项目遵循 [LGPL-3.0 License](LICENSE)。
-
-所有修改过的部分仍然遵循 [MIT License](MIT%20LICENSE)，并且包含原始库的版权声明和许可声明。
+Please read the [Contributing Guide (CONTRIBUTING.md)](CONTRIBUTING.md) to learn how to submit issues, request features, or contribute code.
 
 ---
 
-## 🙏 致谢
+## 📜 License
+
+This library is modified from [s3_storage](https://pub.dev/packages/s3_storage), and the original author retains full copyright.
+
+This project is licensed under the [LGPL-3.0 License](LICENSE).
+
+All modified portions are still licensed under the [MIT License](MIT%20LICENSE) and include the original library's copyright and licensing information.
+
+---
+
+## 🙏 Acknowledgements
 
 - [s3_storage](https://pub.dev/packages/s3_storage)
 
-## 📢 法律声明
+## 📢 Legal Disclaimer
 
-本开源项目仅供学习和交流用途。由于可能涉及专利或版权相关内容，请在使用前确保已充分理解相关法律法规。未经授权，**请勿将本工具用于商业用途或进行任何形式的传播**。
+This open-source project is for learning and communication purposes only. As it may involve patents or copyrights, please ensure you fully understand the relevant laws and regulations before use. **Do not use this tool for commercial purposes or distribute it in any form without authorization**.
 
-本项目的所有代码和相关内容仅供个人技术学习与参考，任何使用产生的法律责任由使用者自行承担。
+All code and related content in this project is for personal technical learning and reference only. Any legal responsibility arising from its use is borne by the user.
 
-感谢您的理解与支持。
+Thank you for your understanding and support.
